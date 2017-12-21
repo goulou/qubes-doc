@@ -57,6 +57,19 @@ umount /sysroot/dev
 poweroff
 ~~~
 
+>If, instead of dracut emergency shell, you get a login prompt, use the following kernel option :
+>~~~
+>qvm-prefs -s <vm-name> kernelopts single
+>~~~
+>Then issue the following commands :
+>~~~
+>sudo xl console <vm-name>
+># you should get emergency mode shell, press Enter for maintenance
+>e2fsck -f /dev/xvdb
+>resize2fs /dev/xvdb <new-desired-size>
+>poweroff
+>~~~
+
 Now you can resize the image:
 
 ~~~
